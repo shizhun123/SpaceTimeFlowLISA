@@ -41,7 +41,7 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
     # Initializing main data structures from input arguments
     areas1 = AREAS1 
     areas2 = AREAS2 
-    flowvalue = FlowValue
+    y = FlowValue
 
     # Extracting Y values from areas
     y1 = areas1.Y 
@@ -107,8 +107,9 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
 
     # Analyze the results of the Monte-Carlo simulation
     GMoranI_sim.sort()
-    GMoranI_str = "Global Moran's I value is: {}. It is {}, but insignificant at 0.01 level".format(GMoranI, 'positive' if GMoranI >= 0 else 'negative')
-    GMoranI_str += "insignificant at 0.01 level"
+    GMoranI_str = "Global Moran's I value is: {}. It is {}, but insignificant at 0.01 level".format(
+        GMoranI, 'positive' if GMoranI >= 0 else 'negative'
+    )
     if GMoranI >= 0 and GMoranI >= GMoranI_sim[950] or GMoranI <= 0 and GMoranI <= GMoranI_sim[49]:
         GMoranI_str = GMoranI_str.replace("insignificant", "significantly")
 
