@@ -42,7 +42,7 @@ def STweightsFromFlows(AREAS1,AREAS2,FlowValue1,FlowValue2, Time1, Time2, Level)
     WflowMinusOne = FlowValue1 #t-1 flow data
 
 
-    print 'Obtain O & D neighbors by contiguity (Rook or Queen)'
+    print ('Obtain O & D neighbors by contiguity (Rook or Queen)')
     Grid1Wrook = areas1.Wrook
     Grid2Wrook = areas2.Wrook
     #Grid2Wqueen = areas2.Wqueen
@@ -51,7 +51,7 @@ def STweightsFromFlows(AREAS1,AREAS2,FlowValue1,FlowValue2, Time1, Time2, Level)
     yKeys = Wflowtrue.keys()
     yKeysMinusOne = WflowMinusOne.keys()
 
-    print "you're using this py file"
+    print ("you're using this py file")
     for key1Zero in range(len(KEY1)):  #because the ID in .shp started from zero.
         for key2Zero in range(len(KEY2)):    #because the ID in .shp started from zero.
             key1 = key1Zero+1
@@ -194,5 +194,5 @@ def STweightsFromFlows(AREAS1,AREAS2,FlowValue1,FlowValue2, Time1, Time2, Level)
         Wflow = WflowHybrid
     else:
         Wflow = {}
-        print 'you must choose a level of flow neighborhood'
+        print ('you must choose a level of flow neighborhood')
     return Wflow

@@ -10,7 +10,7 @@ __maintainer__ = "RiSE Group"
 __email__ = "contacto@rise-group.org"
 
 import numpy as np
-from areacl import AreaCl
+from .areacl import AreaCl
 
 def indexMultiple(x,value):
     """
@@ -25,12 +25,12 @@ def calculateGetisG(keyList, dataMean, dataStd, dataDictionary, dataLength):
     dataLength is the total number of input data units
     """
     sum = 0
+    neighborNumber = len(keyList)
     for i in keyList:
         #sum = sum + np.double(dataDictionary[i])
         #print 'dataDictionary[i]:  ' + str(dataDictionary[i])
         sum = sum + dataDictionary[i]
         #print sum
-	neighborNumber = len(keyList)
     #print neighborNumber
     numerator = sum - (dataMean * neighborNumber)
     denominator = dataStd * ((float(dataLength * neighborNumber - (neighborNumber ** 2)) / (dataLength - 1)) ** 0.5)
@@ -154,7 +154,7 @@ def calculateGearyC(ikey, keyList, dataDictionary):
     sum = 0
     for j in keyList:
         sum = sum + np.double((dataDictionary[ikey]- dataDictionary[j])**2)
-	neighborNumber = len(keyList)
+    neighborNumber = len(keyList)
     #numerator = dataLength* (dataDictionary[i] - dataMean)*sum
     #denominator = dataStd ** 2
 

@@ -6,6 +6,9 @@ __version__ = "1.0.0"
 __maintainer__ = "RiSE Group"
 __email__ = "contacto@rise-group.org"
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import time as tm
 import numpy as np
 from componentsAlg import (calculateGetisG, calculateGearyC, 
@@ -21,7 +24,7 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
     Parameters:
     - AREAS1: List of Origin areas.
     - AREAS2: List of Destination areas.
-    - FlowValue: OD pairs with non-zero value.
+    - FlowValue: OD pairs with non-zero value.流值字典 {(起点ID, 终点ID): 流值}
     - Spatstat: Specifies the type of spatial statistic to be used.
     - NeiLvl: Neighbor Level for weights computation.
 
@@ -33,7 +36,7 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
     start = tm.time()
     
     # Print out the program's banner
-    print "Running FlowLISA by Ran Tao, built on clusterpy by Duque et al."
+    print("Running FlowLISA by Ran Tao, built on clusterpy by Duque et al.")
 
     # Initializing main data structures from input arguments
     areas1 = AREAS1 
@@ -51,7 +54,7 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
     # Calculating weights (Wflow) which represent the flow between areas
     neighborLevel = NeiLvl
     Wflow = weightsFromFlows(areas1, areas2, y, neighborLevel)
-    print 'Finished calculating Wflow.'
+    print("Finished calculating Wflow.")
 
     # Compute global statistics that will be used for the local calculations
     dataSum = np.sum(list(y.values()))

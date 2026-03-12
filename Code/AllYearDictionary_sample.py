@@ -1,7 +1,7 @@
 import pandas as pd
 
 #this code provides a sample of how 'Allyeardic' looks like
-base_path = "C:/"
+base_path = "C:\\Users\\shizhun\\Documents\\GitHub\\SpaceTimeFlowLISA\\data\\"
 base_filename = "OPopweighted_{}_ReadytoUse.txt"
 years = range(2005, 2019)  # From2005to2018
 
@@ -18,7 +18,7 @@ for year in years:
     temp_str = str(temp_dict).replace('L', '')
     temp_dict_cleaned = eval(temp_str)
     # Update dictionary for the specific year with the new structure
-    flow_dicts[year] = dict(((k[0], k[1], year), [v]) for k, v in temp_dict_cleaned.iteritems())
+    flow_dicts[year] = dict(((k[0], k[1], year), [v]) for k, v in temp_dict_cleaned.items())
     # Update the cumulative dictionary across all years
     Allyeardict.update(flow_dicts[year])
 
@@ -33,14 +33,14 @@ df = df.assign(
 ).drop('index', axis=1) 
 
 # Export as .csv file
-df.to_csv('yourpath/Allyeardict.csv', index=False)
+df.to_csv('C:\\Users\\shizhun\\Documents\\GitHub\\SpaceTimeFlowLISA\\allyeardict\\Allyeardict.csv', index=False)
 
 
 
 import pandas as pd
 
 # 读取CSV文件
-df = pd.read_csv('Allyeardict.csv')
+df = pd.read_csv('C:\\Users\\shizhun\\Documents\\GitHub\\SpaceTimeFlowLISA\\allyeardict\\Allyeardict.csv')
 
 # 将DataFrame转换回字典
 # 假设原始字典的键是由'O', 'D', 'Year'组成的元组，值是'Flow'

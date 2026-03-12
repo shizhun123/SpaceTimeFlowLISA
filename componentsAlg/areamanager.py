@@ -9,8 +9,8 @@ __version__ = "1.0.0"
 __maintainer__ = "RiSE Group"
 __email__ = "contacto@rise-group.org"
 
-from areacl import AreaCl
-from dist2Regions import distanceStatDispatcher
+from componentsAlg.areacl import AreaCl
+from componentsAlg.dist2Regions import distanceStatDispatcher
 
 class AreaManager:
     """
@@ -22,12 +22,11 @@ class AreaManager:
         """
         @type w: dictionary
         @param w: With B{key} = area Id, and B{value} = list with Ids of neighbours of
-        each area.
-
+        each area.    w: 空间邻接字典 {区域ID: [邻居ID列表]}
+        
         @type y: dictionary
         @param y: With B{key} = area Id, and B{value} = list with attribute
-        values.
-
+        values.         y: 属性数据字典 {区域ID: [属性值列表]}
         @type distanceType: string
         @keyword distanceType: Function to calculate the distance between areas. Default value I{distanceType = 'EuclideanSquared'}.
 
@@ -35,21 +34,27 @@ class AreaManager:
         @keyword variance: Boolean indicating if the data have variance matrix. Default value I{variance = 'false'}.
         """
         self.y = y
-        self.areas = {}
-        self.noNeighs = set([])
+        self.areas = {} #  存储AreaCl实例的字典
+        self.noNeighs = set([]) #孤立区域
         self.variance = variance
-        self.distanceType = distanceType
-        self.createAreas(w, y)
-        self.distanceStatDispatcher = distanceStatDispatcher
+        self.distanceType = distanceType    
+        self.createAreas(w, y)  # 创建区域实例
+        self.distanceStatDispatcher = distanceStatDispatcher    #距离计算方法调度器
 
-    def createAreas(self, w, y):
+
+
+
+    def createAreas(self, w, y):    # w: 空间邻接字典 {区域ID: [邻居ID列表]}  y: 属性数据字典 {区域ID: [属性值列表]}
         """
         Creates instances of areas based on a sparse weights matrix (w) and a
         data array (y).
         """
-        n = len(self.y)
-        self.distances = {}
-        noNeighs = []
+        
+        n = len(self.y)  # 区域总数n
+        self.distances = {}  # 初始化距离字典
+        noNeighs = []  # 临时存储孤立区域
+        
+        
         for key in range(n):
             data = y[key]
             try:
@@ -57,17 +62,27 @@ class AreaManager:
             except:
                 neighbours = {}
                 w[key] = {}
+                
+            # 检查是否为孤立区域    
             if len(w[key]) == 0:
                 self.noNeighs = self.noNeighs | set([key])
+                
+            # 创建AreaCl实例    
             a = AreaCl(key, neighbours, data, self.variance)
-            self.areas[key] = a
+            self.areas[key] = a # area字典存储AreaCl实例
+            
+         # 如果有孤立区域，打印警告    
         if len(self.noNeighs) > 0:
-            print "Disconnected areas neighs: ", list(self.noNeighs)
+            print("Disconnected areas neighs: "), list(self.noNeighs)
 
     def returnDistance2Area(self, area, otherArea):
         """
         Returns the distance between two areas
+        假设距离已经预先计算并存储在 self.distances 字典中
+        # 距离字典的结构：
+            self.distances = {(O, D): distance}
         """
+        
         i = 0
         j = 0
         dist = 0.0
@@ -89,6 +104,7 @@ class AreaManager:
         dataAvg = len(dataIndex) * [0.0]
         for aID in areaList:
             i = 0
+             # 累加每个区域的属性值，并除以区域总数
             for index in dataIndex:
                 dataAvg[i] += self.areas[aID].data[index] /len(areaList)
                 i += 1
@@ -124,7 +140,7 @@ class AreaManager:
         Return the ID of the area whitin a region that is closest to an area
         outside the region
         """
-        areaMin = -1;
+        areaMin = -1
         distanceMin = 1e300
         for aID in areaList:
             if self.distances[area.id, aID] < distanceMin:

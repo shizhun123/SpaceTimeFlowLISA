@@ -29,10 +29,10 @@ def weightsFromFlows(AREAS1, AREAS2, FlowValue, Level):
     areas1 = AREAS1  # list of O area
     areas2 = AREAS2  # list of D area
     Wflowtrue = FlowValue  # flow data
-    print 'Using contiguity WeightFromFlows'
-    print 'running from contiguity'
-    print 'Obtain O & D neighbors by contiguity (Rook or Queen)'
-    print "Weight level is " + str(Level)
+    print ('Using contiguity WeightFromFlows')
+    print ('running from contiguity')
+    print ('Obtain O & D neighbors by contiguity (Rook or Queen)')
+    print ("Weight level is " + str(Level))
     Grid1Wrook = areas1.Wrook
     Grid2Wrook = areas2.Wrook
     # Grid2Wqueen = areas2.Wqueen
@@ -105,5 +105,5 @@ def weightsFromFlows(AREAS1, AREAS2, FlowValue, Level):
             Wflow[key].append(key)
     else:
         Wflow = {}
-        print 'you must choose a level of flow neighborhood'
+        print ('you must choose a level of flow neighborhood')
     return Wflow

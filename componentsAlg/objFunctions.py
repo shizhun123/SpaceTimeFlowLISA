@@ -10,7 +10,7 @@ __version__ = "1.0.0"
 __maintainer__ = "RiSE Group"
 __email__ = "contacto@rise-group.org"
 
-from distanceFunctions import distMethods
+from .distanceFunctions import distMethods
 import numpy as np
 
 def getObjectiveFunctionSumSquares(regionMaker,

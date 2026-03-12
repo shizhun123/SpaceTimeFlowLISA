@@ -14,3 +14,5 @@ from transformations import dict2matrix
 from transformations import dict2sparseMatrix
 from output import dict2gal, dict2csv
 from weightsFromFlows import weightsFromFlows
+
+from SpaceTime_weightsFlows import STweightsFromFlows

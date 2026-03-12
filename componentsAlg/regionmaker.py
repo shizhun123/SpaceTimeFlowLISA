@@ -11,14 +11,14 @@ __email__ = "contacto@rise-group.org"
 
 from copy import deepcopy
 import numpy as np
-from objFunctions import makeObjDict, objectiveFunctionTypeDispatcher
-from selectionTypeFunctions import selectionTypeDispatcher
+from .objFunctions import makeObjDict, objectiveFunctionTypeDispatcher
+from .selectionTypeFunctions import selectionTypeDispatcher
 from warnings import warn
 from time import time
 
-from memory import ExtendedMemory as ExtMem
-from areacl import AreaCl
-from helperfunctions import sortedKeys
+from .memory import ExtendedMemory as ExtMem
+from .areacl import AreaCl
+from .helperfunctions import sortedKeys
 from os import getpid
 
 class RegionMaker:

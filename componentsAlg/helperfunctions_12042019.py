@@ -30,8 +30,8 @@ def calculateGetisG(keyList, dataMean, dataStd, dataDictionary, dataLength):
         #print 'dataDictionary[i]:  ' + str(dataDictionary[i])
         sum = sum + dataDictionary[i]
         #print sum
-	neighborNumber = len(keyList)
-	print neighborNumber
+    neighborNumber = len(keyList)
+    print (neighborNumber)
     numerator = sum - (dataMean * neighborNumber)
     denominator = dataStd * ((float(dataLength * neighborNumber - (neighborNumber ** 2)) / (dataLength - 1)) ** 0.5)
 
@@ -49,7 +49,7 @@ def calculateMoranI(ikey, keyList, dataMean, dataStd, dataDictionary, dataLength
     sum = 0
     for j in keyList:
         sum = sum + np.double((dataDictionary[j])- dataMean)
-	neighborNumber = len(keyList)
+    neighborNumber = len(keyList)
     
     numerator = dataLength*(dataDictionary[ikey] - dataMean)*sum
     denominator = dataStd ** 2
@@ -105,12 +105,11 @@ def calculateBivaraiteMoranI(ikey, keyList, dataDictionary):
 ##    dataStd2 = np.std(np.double(dataDictionary2.values()[1]))
 
     if ikey == (36,22):
-        print 'dataMean1: ' + str(dataMean1)
-        print 'std_i_value: ' + str(std_i_value)
-        print 'dataMean2: ' + str(dataMean2)
-        print 'len key list: ' + str(len(keyList))
-        print keyList
-
+        print ('dataMean1: ' + str(dataMean1))
+        print ('std_i_value: ' + str(std_i_value))
+        print ('dataMean2: ' + str(dataMean2))
+        print ('len key list: ' + str(len(keyList)))
+        print (keyList)
     for j in keyList:
         #print j
         neighborNumber = len(keyList)
@@ -139,7 +138,7 @@ def calculateGearyC(ikey, keyList, dataDictionary):
     sum = 0
     for j in keyList:
         sum = sum + np.double((dataDictionary[ikey]- dataDictionary[j])**2)
-	neighborNumber = len(keyList)
+    neighborNumber = len(keyList)
     #numerator = dataLength* (dataDictionary[i] - dataMean)*sum
     #denominator = dataStd ** 2
 

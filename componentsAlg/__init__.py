@@ -9,17 +9,19 @@ __version__ = "1.0.0"
 __maintainer__ = "RiSE Group"
 __email__ = "contacto@rise-group.org"
 
-from clusterpy.core.toolboxes.cluster.componentsAlg.areamanager import AreaManager
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import calculateGetisG
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import calculateMoranI
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import calculateGearyC
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import calculateMultiGearyC
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import calculateBivaraiteMoranI
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import quickSort2
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import neighborSort
-from clusterpy.core.toolboxes.cluster.componentsAlg.memory import BasicMemory
-from clusterpy.core.toolboxes.cluster.componentsAlg.memory import ExtendedMemory
-from clusterpy.core.toolboxes.cluster.componentsAlg.regionmaker import RegionMaker
-from clusterpy.core.toolboxes.cluster.componentsAlg.sommanager import geoSomManager
-from clusterpy.core.toolboxes.cluster.componentsAlg.sommanager import somManager
-from clusterpy.core.toolboxes.cluster.componentsAlg.helperfunctions import randomOD
+
+
+from componentsAlg.areamanager import AreaManager
+from componentsAlg.helperfunctions import calculateGetisG
+from componentsAlg.helperfunctions import calculateMoranI
+from componentsAlg.helperfunctions import calculateGearyC
+from componentsAlg.helperfunctions import calculateMultiGearyC
+from componentsAlg.helperfunctions import calculateBivaraiteMoranI
+from componentsAlg.helperfunctions import quickSort2
+from componentsAlg.helperfunctions import neighborSort
+from componentsAlg.memory import BasicMemory
+from componentsAlg.memory import ExtendedMemory
+from componentsAlg.regionmaker import RegionMaker
+from componentsAlg.sommanager import geoSomManager
+from componentsAlg.sommanager import somManager
+from componentsAlg.helperfunctions import randomOD
