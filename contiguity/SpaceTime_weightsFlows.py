@@ -187,7 +187,7 @@ def STweightsFromFlows(AREAS1,AREAS2,FlowValue1,FlowValue2, Time1, Time2, Level)
     elif Level == 494:
         Wflow = WflowLaggedDownOD
     elif Level == 412:
-        Wflow = WflowLaggedUp2
+        Wflow = {}
     elif Level == 413:
         Wflow = WflowLaggedDown2
     elif Level == 55:

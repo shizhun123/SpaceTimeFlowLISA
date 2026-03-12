@@ -8,11 +8,5 @@ __version__ = "1.0.0"
 __maintainer__ = "RiSE Group"
 __email__ = "contacto@rise-group.org"
 
-from weightsFromAreas import weightsFromAreas
-from intersections import fixIntersections
-from transformations import dict2matrix
-from transformations import dict2sparseMatrix
-from output import dict2gal, dict2csv
-from weightsFromFlows import weightsFromFlows
-
-from SpaceTime_weightsFlows import STweightsFromFlows
+from .weightsFromFlows import weightsFromFlows
+from .SpaceTime_weightsFlows import STweightsFromFlows
